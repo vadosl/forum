@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.contrib import admin
 from string import join
@@ -71,6 +72,36 @@ class Post(models.Model):
     def profile_data(self):
         p = self.creator.userprofile_set.all()[0]
         return p.posts, p.avatar
+
+
+### Signals block#####
+def create_user_profile(sender, **kwargs):
+    """When creating a new user, make a profile for him or her."""
+    u = kwargs["instance"]
+    if not UserProfile.objects.filter(user=u):
+        UserProfile(user=u).save()
+        print "User %s is created" % (u,)
+
+post_save.connect(create_user_profile, sender=User)
+
+
+
+def new_post_created(sender, **kwargs):
+        p = kwargs["instance"]
+        print "New post created by %s" % p.creator
+post_save.connect(new_post_created, sender=Post)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

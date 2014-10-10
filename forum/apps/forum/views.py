@@ -36,7 +36,8 @@ def forum(request, pk):
     """Listing of threads in a forum."""
     threads = Thread.objects.filter(forum=pk).order_by("-created")
     threads = mk_paginator(request, threads, 20)
-    context_dict = {'pk':pk, 'threads':threads}
+    title = Forum.objects.get(pk=pk)
+    context_dict = {'pk':pk, 'threads': threads, 'title': title}
     return render_to_response("forum/forum.html",context_dict, context)
 
 
