@@ -1,0 +1,55 @@
+* {
+    color: #555;
+    font-size: 0.95em;
+}
+
+#container { margin: auto; width: 800px; border: 0px solid; }
+#back { margin: 5px; }
+#reply { margin-top: 10px; width: 500px; }
+#body { width: 500px; height: 250px; font-size: 1.3em; }
+#submit { float: right; }
+#rtitle {background: #eee; font-size: 1.3em; padding: 3px; margin-top: 40px;
+    padding-left: 20px; margin-bottom: -10px;}
+#list { border: 1px solid #a6cccc; width: 850px; background: #f6f6f6; }
+
+#menu a {
+    text-decoration: none;
+    background: #eee;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 2px solid #fff;
+    padding-right: 3px;
+    padding-left: 3px;
+    color: #777;
+    font-size: 0.9em;}
+
+p { font-size: 1.1em; }
+h3, h4 { margin-right: 30px; display: inline; }
+img { margin-left: 85px; border: 1px solid #ccc; padding: 4px; }
+a:hover {background: #eeebeb;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    color: #555;}
+<!--profile.html-->
+
+
+<!--post html-->
+      .main { margin-left: 25px; margin-top: 30px; }
+<!--thread.html-->
+.pagination { margin-top: 20px; margin-left: -20px; }
+.main { margin-left: 25px; margin-top: 30px; width: 700px; }
+.title { font-size: 1.4em; margin-top: 10px; padding-left: 0px; }
+.title a { text-decoration: none; }
+.button { background: #999; color: white; padding: 6px; text-decoration: none; float: right; }
+.date { font-size: 0.8em; padding-left: 5px; }
+.ppic { float: right; }
+.clear { clear: both; }
+.last { border: 0px; }
+
+.post {margin: 8px; padding: 8px; border: 1px solid #ccc; margin-bottom: 14px; background: white;}
+
+.main { margin-left: 25px; margin-top: 30px; }
+
+
+
+

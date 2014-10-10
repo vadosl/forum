@@ -1,0 +1,34 @@
+{% extends 'forum/fbase.html' %}
+
+{% block content %}
+<!-- Forums  -->
+<div id="list">
+<table border="0" cellpadding="4" width="100%">
+    <tr>
+        <td></td>
+        <td>Posts</td>
+        <td>Last post</td>
+        <td></td>
+    </tr>
+
+    {% for forum in forums %}
+    <tr>
+        <td {% if forloop.last %}class="last"{% endif %}>
+        <div class="title"> <a href="{% url 'forum:forum' forum.pk %}">{{ forum.title }}</a>
+            </div></td>
+        <td {% if forloop.last %}class="last"{% endif %}>{{ forum.num_posts }}</td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+            {{ forum.last_post.short|linebreaksbr }}</td>
+        <td {% if forloop.last %}class="last"{% endif %}>
+            <a class="button" href="{% url 'forum:forum' forum.pk %}">VIEW</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        Форумов нет... Добавьте форум, пожалуйста
+    </tr>
+
+    {% endfor %}
+</table>
+</div>
+{% endblock content %}

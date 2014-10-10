@@ -1,0 +1,29 @@
+{% extends 'forum/fbase.html' %}
+{% block sidebar %} <style type="text/css"> </style> {% endblock %}
+
+{% block content %}
+    <style type="text/css">
+
+    </style>
+
+    <div class="main">
+        <div id="rtitle">Edit Profile</div><br />
+
+        <p>
+            <form enctype="multipart/form-data" action="" method="POST">
+            {% csrf_token %}
+
+                {% if img %} <p><img border="0" alt="Profile Pic" src="{{ img }}" /></p> {% endif %}
+
+                Profile Pic: {{ pf.avatar }}
+
+    {% if  profile.avatar%}
+        <br>name={{ profile.avatar.name }}
+        <br>url={{ profile.avatar.url }}
+    {% endif %}
+                <input type="submit" value="Сохранить" id="submit" />
+            </form>
+        </p>
+    </div>
+
+{% endblock content%}

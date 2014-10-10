@@ -1,0 +1,64 @@
+{% extends "forum/fbase.html" %}
+
+{% block sidebar %} <style type="text/css"> </style> {% endblock %}
+
+{% block content %}
+
+    <div class="main">
+
+        <div class="ttitle">{{ title }}</div>
+            <div id="back">
+
+            </div>
+        <div id="list">
+
+            <!-- Posts  -->
+            {% for post in posts.object_list %}
+                <div class="post">
+
+                    <div class="ppic">
+                        {% with post.profile_data as pdata %}
+                            {% if pdata.1 %}
+                                <img src="{{ pdata.1.url }}" /> <br />
+                            {% endif %}
+                        {{ post.creator }}<br />
+                        Posts: {{ pdata.0 }}<br />
+                        Joined: {{ post.creator.date_joined|date:"d M Y" }}
+                        {% endwith %}
+                    </div>
+
+                    <span class="title">{{ post.title }}</span><br />
+                    by {{ post.creator }} | <span class="date">{{ post.created }}</span> <br /><br />
+
+                    {{ post.body|linebreaksbr }} <br />
+
+                    <div class="clear"></div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Next/Prev page links  -->
+        {% if posts.object_list and posts.paginator.num_pages > 1 %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href= "?page={{ posts.previous_page_number }}">previous &lt;&lt; </a>
+                {% endif %}
+
+                <span class="current">
+                    &nbsp;Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}"> &gt;&gt; next</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+
+        <br />
+        <a href="{% url 'forum:forum' forum_pk %}">&lt;&lt; back to list of topics</a>
+        <a class="button" href="{% url 'forum:post' 'reply' pk %}">Reply</a>
+
+    </div>
+
+{% endblock %}
